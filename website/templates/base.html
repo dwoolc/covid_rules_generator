@@ -1,0 +1,98 @@
+{% extends "core_layout.html" %}
+
+{% block about %}
+<div class="position-relative overflow-hidden p-3 p-md-5 left bg-light">
+    <div class = "container d-flex flex-column flex-md-row justify-content-between">
+        <div class="row top-buffer">
+                <div class="col">
+                    <p class="text-justify">{{opening}}</p>
+                    {% for q in qs %}
+                            <li class="text-left mb-2">{{ q }}</li>
+                    {% endfor %}
+                    <p class="text-justify">{{offers}}</p>
+                    <p class="text-justify">{{final}}</p>
+                    <a class = "btn btn-success my-2" href="{{ url_for('anch_redirect') }}" id="generate_rules">Generate!</a>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock about %}
+
+{% block rules %}
+<div class="position-relative overflow-hidden p-3 p-md-5 left mt-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            {% if not rules %}
+                <p class="text-justify"><strong>Uh Oh! You haven't generated any rules yet. People will think you're sleeping on the job. Go ahead and hit the
+                    Generate button above to get some regulations going!</strong></p>
+            {% else %}
+                <h3>{{state}}</h3>
+                {% if state == "National Lockdown" %}
+                    <p class="text-justify"> These rules apply to everyone. Things have gotten out of hand and we need to take drastic action
+                    to curb the spread of this dangerous virus. We ask everyone to comply with these rules - we can
+                        assure you we've done extensive cost benefit analysis and would only take this action if we
+                        believed it were absolutely neccessary. </p>
+                {% else %}
+                    <p class="text-justify"> We have devised a carefully calibrated tier system, which places different areas in England
+                    under different levels of restrictions. This is a response to the latest data on infection rates
+                        from each area. The higher the tier, the more restrictive the measures. We ask that everyone
+                        spend all the time needed researching and studying the rules for their local area and comply
+                        with the rules which they think apply to them. </p>
+                {% endif %}
+
+                {% if state == "National Lockdown" %}
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                              <th scope="col" class="table-danger">Restrictions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for rule in tiers %}
+                                <tr class="table-active">
+                                  <th scope="row">{{ rule }}</th>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    {% for tier in tiers %}
+                        <h4 class="text-center mt-4">Tier {{ tier['lvl'] }}</h4>
+                        <div class="container">
+                            {% if tier['lvl'] == 1 %}
+                                <p> These rules apply to everyone not covered in the other tiers. So you'll need to read
+                                them all and try and establish whether they apply to you. </p>
+                            {% else %}
+                                <p> These rules apply to those resident in the following areas:</p>
+                                {% for place in tier['places']%}
+                                    <li class="text-left mb-2">{{ place}}</li>
+                                {% endfor %}
+                                {% if tier['lvl'] == 2 %}
+                                    <p> You must also adhere to all of the rules given in the prior tier. </p>
+                                {% else %}
+                                    <p> You must also adhere to all of the rules given in the prior tiers. </p>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                  <th scope="col" class="table-warning">Rule</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for rule in tier['rules'] %}
+
+                                    <tr class="table-active">
+                                      <th scope="row">{{ rule }}</th>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock rules %}

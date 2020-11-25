@@ -1,0 +1,74 @@
+{% extends "core_layout.html" %}
+{% block content %}
+<div class="position-relative overflow-hidden p-3 p-md-5 left">
+    <div class = "container-fluid">
+        <div class="row justify-content-center top-buffer">
+            <div class="col-md-10">
+              <article class="media content-section mx-5 p-3">
+                <img class=" article-img img-rounded mt-2 mb-2 ml-2" src="{{ url_for('static', filename='summary_thumbnails/cookies_thumb.png') }}">
+                <div class="media-body mr-5">
+                  <div class="article-metadata">
+                    <h2 class="article.title">Cookies, Consent, You & Me</h2>
+                    <small class="text-muted">21/11/2020</small>
+                  </div>
+                  <p class="text-muted">Some more details on cookies and this site for the intellectually masochistic</p>
+
+                  <p class="text-justify">This page serves as both a Privacy & Cookie notice, and so should cover the bases
+                      for most legislation governing privacy & data collection internationally. Happily, I'm an individual
+                      and making very limited use of cookies on this site, so we can keep this nice and short. </p>
+
+                  <p class="text-justify">Just so that we're clear what we're talking about, a cookie is a small .txt file
+                      saved on a browser from a site which is then fed back to the site when interacting with it, for
+                      saving preferences and similar quality-of-life improvements. This means that it sits on the user
+                      (your) side, rather than the site side, and is fed back whenever you interact with the site and
+                      the site requests it. For example, when you consent to cookie collection, you receive a cookie
+                      identifying this consent. The site will then check for this cookie on your browser before offering
+                      you the consent banner; if you have consented you won't see it.</p>
+
+                  <p class="text-justify">Cookies come in several flavours - the first types split are session and persistent.
+                      Session cookies last for your browsing session, whilst persistent cookies with "persist" on your
+                      browser beyond the session (<em>a classic case of does what it says on the tin</em>). </p>
+
+                  <p class="text-justify">Cookies may also be first-party (placed directly by the site you're visiting),
+                      or third-party, being placed by an entity other than the site you're visiting (think marketing,
+                      advertisement and analytics). All of my cookies are first-party, so it's just you and me.</p>
+
+                  <p class="text-justify">Most cookies just save preferences or track if you're logged in. There are some
+                     sophisticated setups which are able to track your browsing behaviours on other sites. To do this,
+                      they need to be persistent, and they'll generally be third party. So none of that here.</p>
+
+                  <p class="text-justify">This site uses a very small number of cookies to assist in tracking user
+                      activity. There is a single cookie which monitors the single browsing session,
+                      and a second which logs whether you have consented to the collection of cookies. And that's it.
+                      They're both session cookies, meaning that they won't persist at your end once you leave the site and
+                      I'm not using them to spy on you. </p>
+
+                  <p class="text-justify">Cookies are categorised based on their purpose.</p>
+                  <ol>
+                    <li class="text-justify mt-2">Strictly Necessary</li>
+                    <li class="text-justify mt-2">Preferences </li>
+                    <li class="text-justify mt-2">Statistics</li>
+                    <li class="text-justify mt-2">Marketing</li>
+                  </ol>
+                  <p class="text-justify">The cookies this site uses all fall under <em>Strictly Necessary</em>, in that
+                      they're fundamental to site function.</p>
+
+                  <p class="text-justify">I'm not reviewing or accessing these cookies directly, and as they're session
+                    cookies they expire at the end of the browsing session to comply with the general
+                    principle of GDPR to keep data collection to a necessary minimum, and thus also reduce your
+                    general exposure.</p>
+
+                  <p class="text-justify"> If you want to follow up on any of the above, or would like clarifications, feel
+                    free to hit me up via Get In Touch. You can also enjoy more riveting reading on the
+                      <a href="https://gdpr.eu/cookies/">GDPR site</a>. </p>
+
+                    <p class="text-justify">If you're not happy at this point, we're at a bit of stalemate -
+                    you can contact me, but you'll need to implicitly consenting to giving me more data than
+                    you would do via the session cookies...</p>
+                </div>
+              </article>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content%}
